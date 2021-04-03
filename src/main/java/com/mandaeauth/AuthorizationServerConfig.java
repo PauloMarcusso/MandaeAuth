@@ -26,7 +26,8 @@ public class AuthorizationServerConfig extends AuthorizationServerConfigurerAdap
                 .withClient("mandae-web")
                 .secret(passwordEncoder.encode("123"))
                 .authorizedGrantTypes("password")
-                .scopes("write", "read");
+                .scopes("write", "read")
+                .accessTokenValiditySeconds(60 * 60 * 6); // 6 horas (padrão é 12 horas);
     }
 
     //Para o PasswordFlow, precisamos desse método
@@ -36,6 +37,6 @@ public class AuthorizationServerConfig extends AuthorizationServerConfigurerAdap
 
     @Override public void configure(AuthorizationServerSecurityConfigurer security) throws Exception {
         security.checkTokenAccess("isAuthenticated()");
-        //security.checkTokenAccess("permiteAll()");
+        //security.checkTokenAccess("permitAll()");
     }
 }
