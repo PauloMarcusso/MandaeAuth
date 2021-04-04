@@ -33,6 +33,14 @@ public class AuthorizationServerConfig extends AuthorizationServerConfigurerAdap
                     .scopes("write", "read")
                     .accessTokenValiditySeconds(60 * 60 * 6)// 6 horas (padrão é 12 horas);
 
+                //Authorization Code Grant Type
+                .and()
+                    .withClient("analytics")
+                    .secret(passwordEncoder.encode("123"))
+                    .authorizedGrantTypes("authorization_code")
+                    .redirectUris("http://aplicacao-cliente")
+                    .scopes("write", "read")
+
                 //Client Credentials Flow
                 .and()
                     .withClient("faturamento")
