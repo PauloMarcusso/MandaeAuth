@@ -38,7 +38,7 @@ public class AuthorizationServerConfig extends AuthorizationServerConfigurerAdap
                     .withClient("analytics")
                     .secret(passwordEncoder.encode("123"))
                     .authorizedGrantTypes("authorization_code")
-                    .redirectUris("http://aplicacao-cliente")
+                    .redirectUris("http://localhost:8082")
                     .scopes("write", "read")
 
                 //Client Credentials Flow
