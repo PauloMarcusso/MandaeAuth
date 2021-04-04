@@ -27,14 +27,22 @@ public class AuthorizationServerConfig extends AuthorizationServerConfigurerAdap
     @Override public void configure(ClientDetailsServiceConfigurer clients) throws Exception {
         clients
                 .inMemory()
-                .withClient("mandae-web")
-                .secret(passwordEncoder.encode("123"))
-                .authorizedGrantTypes("password", "refresh_token")
-                .scopes("write", "read")
-                .accessTokenValiditySeconds(60 * 60 * 6)// 6 horas (padrão é 12 horas);
+                    .withClient("mandae-web")
+                    .secret(passwordEncoder.encode("123"))
+                    .authorizedGrantTypes("password", "refresh_token")
+                    .scopes("write", "read")
+                    .accessTokenValiditySeconds(60 * 60 * 6)// 6 horas (padrão é 12 horas);
+
+                //Client Credentials Flow
                 .and()
-                .withClient("checktoken")
-                .secret(passwordEncoder.encode("check123"));
+                    .withClient("faturamento")
+                    .secret(passwordEncoder.encode("123"))
+                    .authorizedGrantTypes("client_credentials")
+                    .scopes("write", "read")
+
+                .and()
+                    .withClient("checktoken")
+                    .secret(passwordEncoder.encode("check123"));
     }
 
     //Para o PasswordFlow, precisamos desse método
