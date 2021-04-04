@@ -50,7 +50,15 @@ public class AuthorizationServerConfig extends AuthorizationServerConfigurerAdap
 
                 .and()
                     .withClient("checktoken")
-                    .secret(passwordEncoder.encode("check123"));
+                    .secret(passwordEncoder.encode("check123"))
+
+                //Implict Grant Type
+                .and()
+                    .withClient("implicit")
+                    .authorizedGrantTypes("implicit")
+                    .scopes("write", "read")
+                    .redirectUris("http://aplicacao-cliente")
+        ;
     }
 
     //Para o PasswordFlow, precisamos desse método
