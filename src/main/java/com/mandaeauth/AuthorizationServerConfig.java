@@ -35,6 +35,9 @@ public class AuthorizationServerConfig extends AuthorizationServerConfigurerAdap
     @Autowired
     private UserDetailsService userDetailsService;
 
+    @Autowired
+    private JwtKeyStoreProperties jwtKeyStoreProperties;
+
 //    @Autowired
 //    private RedisConnectionFactory redisConnectionFactory;
 
@@ -90,9 +93,9 @@ public class AuthorizationServerConfig extends AuthorizationServerConfigurerAdap
         var jwtAccessTokenConverter = new JwtAccessTokenConverter();
 //        jwtAccessTokenConverter.setSigningKey("vASVsydvcyavsdavsydvaysvdyasvdTSVIysavdytav");//precisa ter 256bits;
 
-        var jksResource = new ClassPathResource("keystores/mandae.jks");
-        var keyStorePass = "1234560";
-        var keyPairAlias = "mandae";
+        var jksResource = new ClassPathResource(jwtKeyStoreProperties.getPath());
+        var keyStorePass = jwtKeyStoreProperties.getPassword();
+        var keyPairAlias = jwtKeyStoreProperties.getKeyPairAlias();
 
         var keyStoreKeyFactory = new KeyStoreKeyFactory(jksResource, keyStorePass.toCharArray());
         var keyPair = keyStoreKeyFactory.getKeyPair(keyPairAlias);
