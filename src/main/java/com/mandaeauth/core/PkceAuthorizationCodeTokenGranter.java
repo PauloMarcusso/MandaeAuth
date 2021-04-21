@@ -1,4 +1,4 @@
-package com.mandaeauth;
+package com.mandaeauth.core;
 
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;

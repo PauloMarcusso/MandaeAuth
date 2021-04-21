@@ -1,4 +1,4 @@
-package com.mandaeauth;// Fonte: https://spring.io/blog/2015/06/08/cors-support-in-spring-framework#filter-based-cors-support
+package com.mandaeauth.core;// Fonte: https://spring.io/blog/2015/06/08/cors-support-in-spring-framework#filter-based-cors-support
 
 import java.util.Collections;
 
