@@ -9,6 +9,7 @@ import java.util.Collections;
 @Getter
 public class AuthUser extends User {
 
+    private Long userId;
     private String fullName;
     private String email;
 
