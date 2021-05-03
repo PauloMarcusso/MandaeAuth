@@ -49,7 +49,7 @@ public class AuthorizationServerConfig extends AuthorizationServerConfigurerAdap
                     .withClient("mandae-web")
                     .secret(passwordEncoder.encode("123"))
                     .authorizedGrantTypes("password", "refresh_token")
-                    .scopes("write", "read")
+                    .scopes("WRITE", "READ")
                     .accessTokenValiditySeconds(60 * 60 * 6)// 6 horas (padrão é 12 horas);
 
                 //Authorization Code Grant Type
@@ -58,14 +58,14 @@ public class AuthorizationServerConfig extends AuthorizationServerConfigurerAdap
                     .secret(passwordEncoder.encode("123"))
                     .authorizedGrantTypes("authorization_code")
                     .redirectUris("http://localhost:8082")
-                    .scopes("write", "read")
+                    .scopes("WRITE", "READ")
 
                 //Client Credentials Flow
                 .and()
                     .withClient("faturamento")
                     .secret(passwordEncoder.encode("123"))
                     .authorizedGrantTypes("client_credentials")
-                    .scopes("write", "read")
+                    .scopes("WRITE", "READ")
 
                 .and()
                     .withClient("checktoken")
@@ -75,7 +75,7 @@ public class AuthorizationServerConfig extends AuthorizationServerConfigurerAdap
                 .and()
                     .withClient("implicit")
                     .authorizedGrantTypes("implicit")
-                    .scopes("write", "read")
+                    .scopes("WRITE", "READ")
                     .redirectUris("http://aplicacao-cliente")
         ;
     }
